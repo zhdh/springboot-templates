@@ -18,8 +18,9 @@ public class FileUploadController {
     FileService fileService;
 
     @PostMapping(value = "/upload",consumes = "multipart/form-data")
-    public void upload(@RequestParam("file") MultipartFile file) throws IOException {
+    public String upload(@RequestParam("file") MultipartFile file) throws IOException {
         fileService.uploadFile(file.getOriginalFilename(),file);
+        return "success";
     }
 
 }
